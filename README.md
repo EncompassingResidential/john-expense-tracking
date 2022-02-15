@@ -39,16 +39,20 @@ User can delete an expense
 Expenses data can be saved even when browser is refreshed or closed (using local storage)
 ## Learning Resources
 React
+>
 Learn React Course (Scrimba): 
->Link
+Link
 React “Getting Started” Documentation (Very helpful): 
->Link
+Link
 Explanation of `create-react-app` tool: Article
 `Create-react-app` command line tool: Article
+>
 ## HTML
+>
 A complete guide to the <table> element: >Link
-`HTML Table` Tutorial: >Link
-`Local Storage` explanation: >Link
+`HTML Table` Tutorial: Link
+`Local Storage` explanation: Link
+>
 ## Bootstrap
 Learn Bootstrap 4 for free (Scrimba): >Tutorial
 Using Bootstrap 4 with React: >Article
