@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
   
+
+// AVOID THIS file for my project
+
 /*  ReactDOM.render(
   <React.StrictMode>
     <App />
