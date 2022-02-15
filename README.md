@@ -39,20 +39,20 @@ User can delete an expense
 Expenses data can be saved even when browser is refreshed or closed (using local storage)
 ## Learning Resources
 React
-Learn React Course (Scrimba): Link
-React “Getting Started” Documentation (Very helpful): Link
+Learn React Course (Scrimba): >Link
+React “Getting Started” Documentation (Very helpful): >Link
 Explanation of create-react-app tool: Article
 Create-react-app command line tool: Article
 ## HTML
-A complete guide to the <table> element: Link
-HTML Table Tutorial: Link
-Local Storage explanation: Link
+A complete guide to the <table> element: >Link
+HTML Table Tutorial: >Link
+Local Storage explanation: >Link
 ## Bootstrap
-Learn Bootstrap 4 for free (Scrimba): Tutorial
-Using Bootstrap 4 with React: Article
+Learn Bootstrap 4 for free (Scrimba): >Tutorial
+Using Bootstrap 4 with React: >Article
 ## Heroku
-What is Heroku (Video)? Link
-Deploying a React App to Heroku: Link
+What is Heroku (Video)? >Link
+Deploying a React App to Heroku: >Link
 ### Next Steps: When the Application is Complete
 Post in the #expense-tracker-app channel in Slack. Let the @Support Coaches know that it’s ready for a code review.
 Move on to your next project
