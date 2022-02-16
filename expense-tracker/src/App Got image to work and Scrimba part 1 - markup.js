@@ -4,8 +4,37 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
-// Works "../src/logo192moved.png"
+// Did not work...
+// const img_path = "/Users/johnc/Documents/Computer/SDMM/john-expense-tracking/expense-tracker/src/logo192moved.png"
+// const img_path = "./john-expense-tracking/expense-tracker/src/logo192moved.png"
+// const img_path = "john-expense-tracking/expense-tracker/src/logo192moved.png"
+// const img_path = "expense-tracker/src/logo192moved.png"
+// const img_path = "./expense-tracker/src/logo192moved.png"
+// const img_path = "./src/logo192moved.png"
+// const img_path = "src/logo192moved.png"
+// const img_path = "./logo192moved.png"
+// const img_path = "logo192moved.png"
+// const img_path = "../src/logo192moved.png"
+// const img_path = "./../src/logo192moved.png"
+
+/* worked:
+import img_path from "./../src/logo192moved.png";
 import img_path from "../src/logo192moved.png";
+import img_path from "./logo192moved.png";
+import img_path from "/Users/johnc/Documents/Computer/SDMM/john-expense-tracking/expense-tracker/src/logo192moved.png"
+
+Did NOT work
+import img_path from "../public/logo192.png";
+Error: "Module not found: Error: You attempted to import ../public/logo192.png which falls outside of the project src/ directory. Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/."
+
+In online course Scrimba this worked:
+const img_path = "./logo192moved.png"
+<img src={img_path} />
+or
+<img src="./logo192moved.png" />
+ */
+import img_path from "./logo192moved.png";
 
 const img_width = "100px";
 
@@ -36,7 +65,7 @@ console.log(JSON.stringify(element))
 const page = (
   <div>
     <img src={img_path} width={img_width} />
-    <h6>img_path</h6>
+    <h6>{img_path}</h6>
     <h1>Fun facts about React</h1>
     <ul>
         <li>Was first released in 2013</li>
@@ -48,8 +77,6 @@ const page = (
 
   </div>
 )
-console.log("page contents is <", JSON.stringify(page));
-
 ReactDOM.render(
   page,
   // <Navbar />,
