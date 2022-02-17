@@ -33,7 +33,8 @@ const element = (
 )
 console.log(JSON.stringify(element))
 
-const page = (
+function TemporaryName() {
+  return (
   <div>
     <img src={img_path} width={img_width} />
     <h6>img_path</h6>
@@ -47,12 +48,16 @@ const page = (
     </ul>
 
   </div>
-)
-console.log("page contents is <", JSON.stringify(page));
+  )
+}
 
 ReactDOM.render(
-  page,
-  // <Navbar />,
+  <TemporaryName />,
+
+  /* This doesn't work
+  TemporaryName()
+   <Navbar />,
+   */
   document.getElementById("rootExpenseTrackerApp")
 );
 
