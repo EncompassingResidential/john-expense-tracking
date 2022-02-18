@@ -42,6 +42,13 @@ main {
   background-repeat: no-repeat;
   background-size: 50vh;
   background-position: 115% 75%;
+  background-blend-mode:soft-light;
+  /* I like: color-burn, difference, hard-light, soft-light
+  luminosity almost a neon look.
+  multiply made it darken for logo192 
+  overlay made it darken for logo192 
+  saturation was very dark deep color
+  */
 
   padding: 57px 27px;
   color: white;
