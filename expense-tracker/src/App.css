@@ -41,7 +41,7 @@ main {
   background-image: url(./logo192.png);
   background-repeat: no-repeat;
   background-size: 50vh;
-  background-position: 115% 75%;
+  background-position: 115% 75%; /* X & Y position - He used X of right */
   background-blend-mode:soft-light;
   /* I like: color-burn, difference, hard-light, soft-light
   luminosity almost a neon look.
