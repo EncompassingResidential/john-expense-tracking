@@ -19,10 +19,5 @@ function App() {
 
 ReactDOM.render(
   <App />,
-
-  /* This doesn't work
-  TemporaryName()
-   <Navbar />,
-   */
   document.getElementById("rootExpenseTrackerApp")
 );
