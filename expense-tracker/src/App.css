@@ -15,6 +15,14 @@ nav {
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
 }
 
+.gray {
+  color: #918E9B;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .nav--logo {
   max-width: 100px; /* Scrimba he said this is for Safari browsers */
 }
@@ -58,6 +66,7 @@ main {
 
 .card--image {
   width: 100%;
+  max-height: 240px;
   border-radius: 9px;
 }
 
@@ -70,4 +79,5 @@ main {
 .experience--grid {
   display: flex;
   padding: 0px;
+  
 }
