@@ -28,8 +28,11 @@ nav {
 }
 
 section {
-  padding: 20px;
+  padding: 10px;
+  object-fit: contain;
+  background-color: white;
 }
+
 
 .hero {
   display: flex;
@@ -39,15 +42,10 @@ section {
 .hero--photo {
   max-width: 400px;
   align-self: center;
-  object-position: 5vh 1vh;
-}
-
-main {
-
-  padding: 57px 27px;
-  color: red;
-  background-color: white;
-
+  padding: 5px;
+  /* I thought this made the left side what they wanted, 
+     but it trimmed the right side of the image.
+  object-position: 4vh 1vh; */
 }
 
 .hero--header {
@@ -58,10 +56,36 @@ main {
   margin-top: 0;
 }
 
+/* his
+
+.hero {   SAME
+  display: flex;
+  flex-direction: column;
+}
+
+.hero--photo { NOW Same
+  max-width: 400px;
+  align-self: center;
+}
+
+.hero--header {
+  margin-bottom: 16px;
+}
+
+.hero--text {
+  margin-top: 0;
+}
+
+*/
+
+
 .card {
   background-color: white;
   width: 175px;
   font-size: 12px;
+  flex: 0 0 auto;         /* ADD */
+  display: flex;          /* ADD */
+  flex-direction: column; /* ADD */
 }
 
 .card--image {
@@ -70,10 +94,14 @@ main {
   border-radius: 9px;
 }
 
-.card-stats {
+.card--stats {
   display: flex;
-  background-color: green;
-  color: aqua;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+
+  background-color: white;
+  color: rgb(7, 82, 82);
 }
 
 .experience--grid {

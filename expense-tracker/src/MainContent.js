@@ -28,6 +28,7 @@ export default function Card() {
   const cards = data.map(item => {
       return (
         <ExperienceItem
+        key={item.id}
         image={item.coverImg}
         score={item.stats.rating}
         number={item.stats.reviewCount}
@@ -40,7 +41,9 @@ export default function Card() {
   )
   return (
       <div className="experience--grid">
-      {cards}
+      <section className="card--stats">
+        {cards}
+      </section>
       </div>
     )
   }
