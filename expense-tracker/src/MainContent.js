@@ -7,8 +7,16 @@ import star_image from "./images/star.png";
 
 // img src Works after moving src/images folder to public/images
 function ExperienceItem(props) {
+  let badgeText
+  if (props.openSpots === 0) {
+    badgeText = "SOLD OUT"
+  } else if (props.location === "Online") {
+      badgeText = "ONLINE"
+  }
+
   return (
     <div className="card">
+      {badgeText && <div className="card--badge">{badgeText}</div>}
       <img src={`./images/${props.image}`} alt={props.Experience_Description} className="card--image" />
       <div className="card--stats">
         <img src={star_image} alt="Favorite" className="star--image" />
@@ -35,6 +43,7 @@ export default function Card() {
         location={item.location}
         Experience_Description={item.title}
         money_amount={item.price}
+        openSpots={item.openSpots}
         />
       )
     }
