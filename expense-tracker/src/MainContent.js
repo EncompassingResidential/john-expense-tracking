@@ -6,9 +6,11 @@ import data from "./data.js";
 import star_image from "./images/star.png";
 
 // 😱 img src Works after moving src/images folder to public/images
-function ExperienceItem(prop) {
-  console.log(prop)
-  let props = prop.item
+function ExperienceItem(props) {
+  console.log(props)
+  // for pass in of item={item} you can create new Object let props = prop.item
+  // for pass in of {...item} don't need reassign to new Object.
+
   let badgeText
   if (props.openSpots === 0) {
     badgeText = "2/22/22 SOLD OUT"
@@ -39,7 +41,7 @@ export default function Card() {
       return (
         <ExperienceItem
         key={item.id}
-        item={item}
+        {...item}
         />
       )
     }
