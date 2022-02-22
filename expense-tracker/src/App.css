@@ -34,12 +34,12 @@ section {
 }
 
 
-.hero {
+.diary--entry {
   display: flex;
   flex-direction: column;
 }
 
-.hero--photo {
+.diary--image {
   max-width: 400px;
   align-self: center;
   padding: 5px;

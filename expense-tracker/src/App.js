@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './Header.js'
-import Card from './MainContent.js'
+import MainDiary from './MainContent.js'
 
 import './App.css';
 
@@ -10,9 +10,9 @@ import './App.css';
 
 function App() {
   return (
-    <div class="header-main">
+    <div className="app--main">
       <Header />
-      <Card />
+      <MainDiary />
     </div>
   )
 }

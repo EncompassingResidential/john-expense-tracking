@@ -3,49 +3,56 @@ import React from 'react';
 
 import data from "./data.js";
 
-import star_image from "./images/star.png";
+// import earth_image from "./images/earth_image.png";
 
 // 😱 img src Works after moving src/images folder to public/images
-function ExperienceItem(props) {
-  console.log(props)
+/*
+function DiaryCard(props) {
   // for pass in of item={item} you can create new Object let props = prop.item
   // for pass in of {...item} don't need reassign to new Object.
 
-  let badgeText
-  if (props.openSpots === 0) {
-    badgeText = "2/22/22 SOLD OUT"
-  } else if (props.location === "Online") {
-      badgeText = "ONLINE"
-  }
+  // let ImageURL = ""
+  let ImageURL = (props.imageUrl.search("http") >= 0) ? ImageURL = props.imageUrl : ImageURL = "./images/" + props.imageUrl
 
   return (
     <div className="card">
-      {badgeText && <div className="card--badge">{badgeText}</div>}
-      <img src={`./images/${props.coverImg}`} alt={props.title} className="card--image" />
-      <div className="card--stats">
-        <img src={star_image} alt="Favorite" className="star--image" />
-        <span>{props.stats.rating} </span>
-        <span className="gray">({props.openSpots}) • </span>
-        <span className="gray">{props.location}</span>
-      </div>
-      <p>{props.title}</p>
-      <p><span className="bold">From ${props.price}</span> / person</p>
+      <div>ImageURL !== "" && <div className="card--badge">ImageURL</div>
     </div>
   )
 }
+*/
 
-export default function Card() {
-  // <Hero />
+function DiaryCard(props) {
+  console.log(props)
+
+  let imageToPrint
+  (props.imageUrl.search("http") >= 0) ? imageToPrint = props.imageUrl : imageToPrint = `./images/${props.imageUrl}`
+
+  return (
+    <>
+      <div>Tell me more 11:23 am</div>
+      <div className="diary--entry">
+        <p>Before Image {props.title}</p>
+        <img src={imageToPrint} alt="This Description" className="diary--image" />
+        
+        <p>Image location {imageToPrint} is there. </p>
+      </div>
+    </>
+  )
+}
+
+export default function MainDairy() {
 
   const cards = data.map(item => {
       return (
-        <ExperienceItem
-        key={item.id}
-        {...item}
+        <DiaryCard 
+          key={item.id}
+          {...item}
         />
       )
     }
   )
+
   return (
       <div className="experience--grid">
       <section className="card--stats">
