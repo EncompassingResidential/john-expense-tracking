@@ -5,11 +5,13 @@ import data from "./data.js";
 
 import star_image from "./images/star.png";
 
-// img src Works after moving src/images folder to public/images
-function ExperienceItem(props) {
+// 😱 img src Works after moving src/images folder to public/images
+function ExperienceItem(prop) {
+  console.log(prop)
+  let props = prop.item
   let badgeText
   if (props.openSpots === 0) {
-    badgeText = "SOLD OUT"
+    badgeText = "2/22/22 SOLD OUT"
   } else if (props.location === "Online") {
       badgeText = "ONLINE"
   }
@@ -17,15 +19,15 @@ function ExperienceItem(props) {
   return (
     <div className="card">
       {badgeText && <div className="card--badge">{badgeText}</div>}
-      <img src={`./images/${props.image}`} alt={props.Experience_Description} className="card--image" />
+      <img src={`./images/${props.coverImg}`} alt={props.title} className="card--image" />
       <div className="card--stats">
         <img src={star_image} alt="Favorite" className="star--image" />
-        <span>{props.score} </span>
-        <span className="gray">({props.number}) • </span>
+        <span>{props.stats.rating} </span>
+        <span className="gray">({props.openSpots}) • </span>
         <span className="gray">{props.location}</span>
       </div>
-      <p>{props.Experience_Description}</p>
-      <p><span className="bold">From ${props.money_amount}</span> / person</p>
+      <p>{props.title}</p>
+      <p><span className="bold">From ${props.price}</span> / person</p>
     </div>
   )
 }
@@ -37,13 +39,7 @@ export default function Card() {
       return (
         <ExperienceItem
         key={item.id}
-        image={item.coverImg}
-        score={item.stats.rating}
-        number={item.stats.reviewCount}
-        location={item.location}
-        Experience_Description={item.title}
-        money_amount={item.price}
-        openSpots={item.openSpots}
+        item={item}
         />
       )
     }
