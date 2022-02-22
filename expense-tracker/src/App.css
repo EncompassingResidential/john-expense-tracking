@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 nav {
@@ -35,8 +35,9 @@ section {
 
 
 .diary--entry {
-  display: flex;
-  flex-direction: column;
+  background-color: yellow;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .diary--image {
@@ -96,8 +97,7 @@ section {
 }
 
 .card--stats {
-  display: flex;
-  flex-wrap: nowrap;
+  /* display: flex; */
   gap: 20px;
   overflow-x: auto;
 
