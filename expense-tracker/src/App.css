@@ -7,24 +7,20 @@ body {
   font-family: Inter, sans-serif;
 }
 
-nav {
+.navbar {
   height: 70px;
   display: flex;
+
+  background-color: red;
+  color: white;
   
   padding: 20px 36px;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
 }
 
-.gray {
-  color: #918E9B;
-}
-
-.bold {
-  font-weight: bold;
-}
-
 .nav--logo {
   max-width: 100px; /* Scrimba he said this is for Safari browsers */
+  background-color: red;
 }
 
 section {
@@ -36,8 +32,9 @@ section {
 
 .diary--entry {
   background-color: yellow;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction:row;
+  position: relative;
 }
 
 .diary--image {
@@ -49,36 +46,42 @@ section {
   object-position: 4vh 1vh; */
 }
 
-.hero--header {
-  margin-bottom: 16px;
+.flag--image {
+  align-self:flex-start;
+  
+  background-color: goldenrod;
+  
+  /* position: absolute;
+  top: 506px;
+  left: 6px;*/
+  max-width: 10px;
+  padding: 1px;
 }
 
-.hero--text {
-  margin-top: 0;
-}
-
-/* his
-
-.hero {   SAME
+.diary--information {
+  background-color: gold;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  position: relative;
 }
 
-.hero--photo { NOW Same
-  max-width: 400px;
-  align-self: center;
+.diary--topDetails {
+  background-color: orange;
+  display: flex;
+  flex-direction:row;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  position: relative;
+
 }
 
-.hero--header {
-  margin-bottom: 16px;
+.diary--bottomDetails {
+  background-color: green;
+  display: flex;
+  flex-direction:column;
+  position: relative;
 }
-
-.hero--text {
-  margin-top: 0;
-}
-
-*/
-
 
 .card {
   background-color: inherit;

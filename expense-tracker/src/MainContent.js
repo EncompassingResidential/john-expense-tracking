@@ -3,7 +3,7 @@ import React from 'react';
 
 import data from "./data.js";
 
-// import earth_image from "./images/earth_image.png";
+import flag_image from "./images/map_flag_pngguru.png";
 
 // 😱 img src Works after moving src/images folder to public/images
 
@@ -15,12 +15,21 @@ function DiaryCard(props) {
 
   return (
     <>
-      <div>Tell me more 2:32 pm 11:23 am</div>
       <div className="diary--entry">
-        <p>Before Image {props.title}</p>
-        <img src={imageToPrint} alt="This Description" className="diary--image" />
         
-        <p>Image location {imageToPrint} is there. </p>
+        <img src={imageToPrint} alt="This Description" className="diary--image" />
+        <div className="diary--information">
+          <div className="diary--topDetails">
+            <img src={flag_image} alt="Where in the world" className="flag--image" />
+            <p>{props.location}</p>
+            <a href={props.googleMapsUrl} target="_blank">View on Google Maps</a>
+          </div>
+          <div className="diary--bottomDetails">
+            <p>{props.title}</p>
+            <p>{props.startDate} - {props.endDate}</p>
+            <p>{props.description}</p>
+          </div>
+        </div>
       </div>
     </>
   )
