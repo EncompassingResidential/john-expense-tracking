@@ -13,7 +13,7 @@ export default [
     },
     {
         id: 17,
-        title: "Kristie Move In",
+        title: "Emoji 😱 Move In",
         location: "North Carolina",
         googleMapsUrl: "https://goo.gl/maps/YDFWWKLYjieyJ67XA",
         startDate: "23 Nov, 2021",

@@ -8,19 +8,35 @@ body {
 }
 
 .navbar {
-  height: 70px;
-  display: flex;
+  height: 75px;
 
-  background-color: red;
+  background-color: gray;
   color: white;
   
-  padding: 20px 36px;
-  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+
+  align-items: top;
+
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+}
+
+.navbar--info {
+  grid-column-start: 2;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: relative;
+
+  background-color: purple;
+  color: white;
+  border-radius: 19px;
 }
 
 .nav--logo {
-  max-width: 100px; /* Scrimba he said this is for Safari browsers */
-  background-color: red;
+  max-width: 50px; /* Scrimba he said this is for Safari browsers */
+  border-radius: 25px;
 }
 
 section {
@@ -29,82 +45,16 @@ section {
   background-color: white;
 }
 
-
-.diary--entry {
-  background-color: yellow;
-  display: flex;
-  flex-direction:row;
-  position: relative;
-}
-
-.diary--image {
-  max-width: 400px;
-  align-self: center;
-  padding: 5px;
-  /* I thought this made the left side what they wanted, 
-     but it trimmed the right side of the image.
-  object-position: 4vh 1vh; */
-}
-
-.flag--image {
-  align-self:flex-start;
+.main--diary {
+  border-color: red;
   
-  background-color: goldenrod;
-  
-  /* position: absolute;
-  top: 506px;
-  left: 6px;*/
-  max-width: 10px;
-  padding: 1px;
-}
-
-.diary--information {
-  background-color: gold;
-  display: flex;
-  flex-direction:column;
-  position: relative;
-}
-
-.diary--topDetails {
-  background-color: orange;
-  display: flex;
-  flex-direction:row;
-  align-items: flex-start;
-  justify-content: space-around;
-
-  position: relative;
-
-}
-
-.diary--bottomDetails {
-  background-color: green;
-  display: flex;
-  flex-direction:column;
-  position: relative;
-}
-
-.card {
-  background-color: inherit;
-  width: 175px;
-  font-size: 12px;
-  flex: 0 0 auto;         /* ADD */
-  display: flex;          /* ADD */
-  flex-direction: column; /* ADD */
-  position: relative;
-}
-
-.card--image {
-  width: 100%;
-  max-height: 240px;
-  border-radius: 9px;
-}
-
-.card--stats {
-  /* display: flex; */
+  border-width: 5px;
   gap: 20px;
   overflow-x: auto;
 
-  background-color: white;
+  margin: 3px;
+  background-color: purple;
+  border-radius: 19px;
   color: rgb(7, 82, 82);
 }
 
@@ -114,12 +64,74 @@ section {
   
 }
 
-.card--badge {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  background-color: red;
-  padding: 5px 7px;
-  border-radius: 9px;
-  font-weight: bold;
+.diary--entry {
+  background-color: white;
+  display: flex;
+  flex-direction:row;
+  position: relative;
+  border: 3px;
+  border-color: grey;
+}
+
+.diary--image {
+  max-width: 200px;
+
+  object-fit: cover;
+
+  border-radius: 19px;
+
+  align-items: stretch;
+  padding: 5px;
+
+}
+
+.flag--image {
+  
+  background-color: white;
+  
+  max-width: 20px;
+  padding: 1px;
+}
+
+.diary--information {
+  
+  display: flex;
+  flex-direction:column;
+}
+
+.diary--topDetails {
+
+  display: flex;
+  flex-direction:row;
+
+  justify-content:flex-start;
+  align-items: center;
+
+  font-size: 15px;
+  position: relative;
+}
+
+.top--items {
+  padding: 5px;
+}
+
+.diary--location {
+  font-size: 18px;
+}
+
+.diary--bottomDetails {
+
+  display: flex;
+  flex-direction:column;
+  justify-content: ;
+}
+
+.diary--title {
+  
+  font-size: 25px;
+  font-weight:bold;
+}
+
+.diary--dates, .diary--description {
+    font-size: 15px;
 }

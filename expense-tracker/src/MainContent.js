@@ -19,15 +19,17 @@ function DiaryCard(props) {
         
         <img src={imageToPrint} alt="This Description" className="diary--image" />
         <div className="diary--information">
+
           <div className="diary--topDetails">
-            <img src={flag_image} alt="Where in the world" className="flag--image" />
-            <p>{props.location}</p>
-            <a href={props.googleMapsUrl} target="_blank">View on Google Maps</a>
+            <img className="top--items flag--image" src={flag_image} alt="Where in the world"  />
+            <p className="top--items diary--location">{props.location}</p>
+            <a className="top--items" href={props.googleMapsUrl} target="_blank">View on Google Maps</a>
           </div>
+          
           <div className="diary--bottomDetails">
-            <p>{props.title}</p>
-            <p>{props.startDate} - {props.endDate}</p>
-            <p>{props.description}</p>
+            <p className="diary--title">{props.title}</p>
+            <p className="diary--dates">{props.startDate} - {props.endDate}</p>
+            <p className="diary--description">{props.description}</p>
           </div>
         </div>
       </div>
@@ -49,9 +51,9 @@ export default function MainDairy() {
 
   return (
       <div className="experience--grid">
-      <section className="card--stats">
-        {cards}
-      </section>
+        <section className="main--diary">
+          {cards}
+        </section>
       </div>
     )
   }
