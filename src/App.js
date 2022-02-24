@@ -7,7 +7,7 @@ import React from 'react';
 
 // All React coding goes in the src directory.
 
-function App() {
+export default function App() {
   return (
     <div className="app--main">
       <Header />
