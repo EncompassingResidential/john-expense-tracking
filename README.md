@@ -1,60 +1,70 @@
-README.md
-### Code Started 2/15/2022
-# Version 1
+# Getting Started with Create React App
 
-John-Expense-Tracking
-SDMM 4th Project Expense Tracking 1st time using React framework created by Facebook
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Project Feature:
+## Available Scripts
 
-Description
-For this project you are going to make an expense tracker to help someone keep track of their finances.
-The idea of this application is to continue learning HTML/CSS & Javascript but to add in React as well. Learning a front-end framework like React is a crucial skill set right now in web development.
-Here is a good example of how the expense tracker is supposed to work: https://codepen.io/seklerek/pen/zKDce
-Expected Time To Complete
-1-2 weeks
+In the project directory, you can run:
 
-Rules
-Project will be written in:
-HTML
-CSS
-Javascript
-Uses React
-Uses create-react-app command line tool
-Uses Bootstrap 4 for styling
-Deploys app to Heroku
-No copying code of other existing expense tracker apps/projects
+### `npm start`
 
-# Deliverables
-Cross off each one you have completed
-User can add a new expense by pressing a button
-Each expense added is display on the screen in a table
-The expense table shows the following columns
-The date of expense
-A description of the expense
-The amount
-Where the purchases occured (eg. McDonald’s)
-User can delete an expense
-### BONUS
-Expenses data can be saved even when browser is refreshed or closed (using local storage)
-## Learning Resources
-React
-Learn React Course (Scrimba): 
->Link
-React “Getting Started” Documentation (Very helpful): 
->Link
-Explanation of `create-react-app` tool: Article
-`Create-react-app` command line tool: Article
-## HTML
-A complete guide to the <table> element: >Link
-`HTML Table` Tutorial: >Link
-`Local Storage` explanation: >Link
-## Bootstrap
-Learn Bootstrap 4 for free (Scrimba): >Tutorial
-Using Bootstrap 4 with React: >Article
-## Heroku
-What is `Heroku` (Video)? >Link
-Deploying a `React App` to Heroku: >Link
-### Next Steps: When the Application is Complete
-Post in the #expense-tracker-app channel in Slack. Let the @Support Coaches know that it’s ready for a code review.
-Move on to your next project
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
