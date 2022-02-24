@@ -1,24 +1,17 @@
 
 import troll_image from "../images/troll-face.png";
 
-function Navbar() {
-    return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <section className="navbar--info">
-                <img src={troll_image} alt="Troll Face" className="nav--logo" />
-                <h3>Meme Generator</h3>
-            </section>
-        </nav>
-    )
-}
-
-
 export default function Header() {
     return (
     <div>
-       <Navbar />
+        <header className="header">
+            <img 
+            src={troll_image} 
+            className="header--image"
+            />
+            <h2 className="header--title">Meme Generator Started 2/24/2022</h2>
+            <h4 className="header--project">React Course - Project 3 @ 2:08 pm</h4>
+        </header>
     </div>
     )
   }
-  
-  
