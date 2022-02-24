@@ -1,9 +1,8 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 
-import data from "./data.js";
+import data from "./DiaryData.js";
 
-import flag_image from "./images/map_flag_pngguru.png";
+import earth_image from "../images/earth_image.png";
 
 // 😱 img src Works after moving src/images folder to public/images
 
@@ -21,7 +20,7 @@ function DiaryCard(props) {
         <div className="diary--information">
 
           <div className="diary--topDetails">
-            <img className="top--items flag--image" src={flag_image} alt="Where in the world"  />
+            <img className="top--items flag--image" src={earth_image} alt="Where in the world"  />
             <p className="top--items diary--location">{props.location}</p>
             <a className="top--items" href={props.googleMapsUrl} target="_blank">View on Google Maps</a>
           </div>
@@ -37,14 +36,14 @@ function DiaryCard(props) {
   )
 }
 
-export default function MainDairy() {
-
+export default function DiaryMainContent() {
+  
   const cards = data.map(item => {
-      return (
-        <DiaryCard 
-          key={item.id}
-          {...item}
-        />
+    return (
+      <DiaryCard 
+        key={item.id}
+        {...item}
+      />
       )
     }
   )

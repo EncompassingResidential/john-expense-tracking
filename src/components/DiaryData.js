@@ -1,4 +1,7 @@
 
+// This compiled, but didn't return the data: exports.data = [
+// This worked, but gave an warning message in React server : export default [
+
 export default [
     {
         id: 13,

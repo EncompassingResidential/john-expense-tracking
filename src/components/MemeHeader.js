@@ -1,12 +1,12 @@
 
-import earth_image from "./images/earth_image.png";
+import troll_image from "../images/troll-face.png";
 
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <section className="navbar--info">
-                <img src={earth_image} alt="Travel the Earth" className="nav--logo" />
-                <p>My Travel Journal</p>
+                <img src={troll_image} alt="Troll Face" className="nav--logo" />
+                <h3>Meme Generator</h3>
             </section>
         </nav>
     )
