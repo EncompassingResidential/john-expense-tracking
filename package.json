@@ -30,10 +30,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "heroku-postbuild": {
-    "start": "node src/index.js",
-    "build": "webpack"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",

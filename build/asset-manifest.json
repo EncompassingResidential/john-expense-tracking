@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9d99a4b7.css",
+    "main.js": "/static/js/main.0d52bccd.js",
+    "static/media/earth_image.png": "/static/media/earth_image.0d61699a9ac938d59358.png",
+    "static/media/map_flag_pngguru.png": "/static/media/map_flag_pngguru.fcf5bbf960e5fd21bd62.png",
+    "index.html": "/index.html",
+    "main.9d99a4b7.css.map": "/static/css/main.9d99a4b7.css.map",
+    "main.0d52bccd.js.map": "/static/js/main.0d52bccd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d99a4b7.css",
+    "static/js/main.0d52bccd.js"
+  ]
+}
