@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import './App.css';
 
 import Header from './Header.js'
 import MainDiary from './MainContent.js'
 
-import './App.css';
+import React from 'react';
 
 // All React coding goes in the src directory.
 
@@ -16,8 +15,3 @@ function App() {
     </div>
   )
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById("rootExpenseTrackerApp")
-);
