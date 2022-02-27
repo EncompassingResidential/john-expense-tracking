@@ -4,50 +4,28 @@ import memesData from './memesData.js'
 
 export default function MemeMainContent() {
 
-    let url
-    const [isImportant, setIsImportant] = React.useState("No")
+    let [urlString, setUrlString] = React.useState("BlankURL.com")
 
     function getMemeImage() {
-        const memesArray = memesData.data.memes
-        const randomNumber = Math.floor(Math.random() * memesArray.length)
 
-        url = memesArray[randomNumber].url
+        setUrlString(oldValue => {
+           let newUrl = ""
 
-        // This isImportant shows the previous value
-        console.log("\nB4 isImportant Previous Value " + isImportant)
-
-        /*  It changes the HTML to the current status of isImportant
-            THEN it runs this setIsImportant() code.
-            setIsImportant(function(oldValue) {
-                let newString = ""
-                if (oldValue === "Yes") 
-                newString = "No"
-                else {
-                    newString = "Yes"
-                }
-                return ( newString );
-            })
-            */
+           const memesArray = memesData.data.memes
+           const randomNumber = Math.floor(Math.random() * memesArray.length)
+   
+           newUrl = memesArray[randomNumber].url
            
-        // Both of these setIsImportant work
-        setIsImportant(oldValue => {
-           let newString = ""
-           if (oldValue === "Yes") 
-                newString = "No"
-            else {
-                newString = "Yes"
-            }
-            return ( newString );
+           console.log("12:13 newUrl " + newUrl)
+
+           return ( newUrl );
         })
 
-        console.log("11:45 C5 isImportant Previous Value " + isImportant)
-
-        console.log(url)
     }
     
     return (
         <main>
-            <p>{url} </p>
+            <p>{urlString} </p>
             <div className="form">
                 <input 
                     type="text"
@@ -63,7 +41,7 @@ export default function MemeMainContent() {
                     className="form--button"
                     onClick={getMemeImage}
                 >
-                    Get a new meme image 🖼 11:59 am isImportant starts as +NoN Now is {isImportant}
+                    Get a new meme image 🖼
                 </button>
             </div>
         </main>
