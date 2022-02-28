@@ -57,3 +57,20 @@ main {
     border: none;
     cursor: pointer;
 }
+
+.meme--image {
+    max-width: 100%;
+    max-height: 90%;
+}
+
+.thing--list {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+}
+
+.thing--item {
+    min-width: 75px;
+    border-radius: 25px;
+    background-color: rgb(92, 5, 5);
+}

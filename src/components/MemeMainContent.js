@@ -1,6 +1,7 @@
 import React from 'react';
 
 import memesData from './memesData.js'
+import ReactArrayStuff from './ReactArrayStuff.js'
 
 export default function MemeMainContent() {
 
@@ -25,7 +26,6 @@ export default function MemeMainContent() {
     
     return (
         <main>
-            <p>{urlString} </p>
             <div className="form">
                 <input 
                     type="text"
@@ -43,6 +43,16 @@ export default function MemeMainContent() {
                 >
                     Get a new meme image 🖼
                 </button>
+            </div>
+            <div>
+                <p>{urlString} </p>
+                <img 
+                    src={urlString}
+                    className="meme--image"
+                />
+            </div>
+            <div>
+                <ReactArrayStuff />
             </div>
         </main>
     )
