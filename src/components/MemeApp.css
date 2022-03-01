@@ -58,9 +58,37 @@ main {
     cursor: pointer;
 }
 
+.image--container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
 .meme--image {
+    position: relative;
+    top: -50%;
     max-width: 100%;
-    max-height: 90%;
+    max-height: 100%;
+}
+
+.top--text {
+    color: purple;
+    font-size: 5rem;
+
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    transform: translate(-10%, -50%);
+}
+
+.bottom--text {
+    color: green;
+    font-size: 5rem;
+
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -90%);
 }
 
 .thing--list {

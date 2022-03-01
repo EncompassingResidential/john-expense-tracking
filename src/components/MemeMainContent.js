@@ -1,27 +1,43 @@
 import React from 'react';
 
 import memesData from './memesData.js'
-import ReactArrayStuff from './ReactArrayStuff.js'
+
+// import ReactArrayStuff from './ReactArrayStuff.js'
+import SquareElements from './SquareElements.js'
 
 export default function MemeMainContent() {
 
-    let [urlString, setUrlString] = React.useState("BlankURL.com")
+    let [urlString, setUrlString] = React.useState("http://i.imgflip.com/1bij.jpg")
+
+    let [topTextInput, setTopTextInput] = React.useState(document.getElementById("top_text_input"))
+    let [bottomTextInput, setBottomTextInput] = React.useState(document.getElementById("bottom_text_input"))
+    let [topTextId, setTopTextId] = React.useState(document.getElementById("top_text_id"))
+    let [bottomTextElementId, setBottomTextElementId] = React.useState(document.getElementById("bottom_text_id"))
+
+    const [meme, setMeme] = React.useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg"
+    })
+    const [allMemeImages, setAllMemeImages] = React.useState(memesData)
 
     function getMemeImage() {
 
         setUrlString(oldValue => {
-           let newUrl = ""
-
-           const memesArray = memesData.data.memes
+           const memesArray = allMemeImages.data.memes
            const randomNumber = Math.floor(Math.random() * memesArray.length)
+           const url = memesArray[randomNumber].url
    
-           newUrl = memesArray[randomNumber].url
+           setMeme(prevMeme => ({
+               ...prevMeme,
+               randomImage: url
+           }))
            
-           console.log("12:13 newUrl " + newUrl)
-
-           return ( newUrl );
         })
 
+/*        setTopTextElementId(oldTopTextElementID => {
+            oldTopTextElementID.setContext
+        }) */
     }
     
     return (
@@ -31,11 +47,13 @@ export default function MemeMainContent() {
                     type="text"
                     placeholder="Top text"
                     className="form--input"
+                    id="top_text_input"
                 />
                 <input 
                     type="text"
                     placeholder="Bottom text"
                     className="form--input"
+                    id="bottom_text_input"
                 />
                 <button
                     className="form--button"
@@ -44,15 +62,17 @@ export default function MemeMainContent() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div>
+            <div className="image--container">
                 <p>{urlString} </p>
                 <img 
-                    src={urlString}
+                    src={meme.randomImage}
                     className="meme--image"
                 />
+                <div className="top--text" id="top_text_id">Top Text</div>
+                <div className="bottom--text" id="bottom_text_id">Bottom Text</div>
             </div>
             <div>
-                <ReactArrayStuff />
+                <SquareElements />
             </div>
         </main>
     )
