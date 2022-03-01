@@ -3,7 +3,17 @@ import React from 'react';
 import memesData from './memesData.js'
 
 // import ReactArrayStuff from './ReactArrayStuff.js'
-import SquareElements from './SquareElements.js'
+//    <div>
+//        <ReactArrayStuff />
+//    </div>
+
+// import SquareElements from './SquareElements.js'
+//    <div>
+//        <SquareElements />
+//    </div>
+
+import './joke.css';
+import Joke from './Joke.js'
 
 export default function MemeMainContent() {
 
@@ -27,7 +37,7 @@ export default function MemeMainContent() {
            const memesArray = allMemeImages.data.memes
            const randomNumber = Math.floor(Math.random() * memesArray.length)
            const url = memesArray[randomNumber].url
-   
+
            setMeme(prevMeme => ({
                ...prevMeme,
                randomImage: url
@@ -36,12 +46,15 @@ export default function MemeMainContent() {
         })
 
 /*        setTopTextElementId(oldTopTextElementID => {
-            oldTopTextElementID.setContext
-        }) */
+    oldTopTextElementID.setContext
+}) */
     }
     
     return (
         <main>
+            <div>
+                <Joke />
+            </div>
             <div className="form">
                 <input 
                     type="text"
@@ -70,9 +83,6 @@ export default function MemeMainContent() {
                 />
                 <div className="top--text" id="top_text_id">Top Text</div>
                 <div className="bottom--text" id="bottom_text_id">Bottom Text</div>
-            </div>
-            <div>
-                <SquareElements />
             </div>
         </main>
     )
