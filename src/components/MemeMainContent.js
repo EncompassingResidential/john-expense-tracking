@@ -20,7 +20,7 @@ import memesData from './memesData.js'
 
 import Form from './Form.js'
 //    <div>
-//        <SquareElements />
+//        <Form />
 //    </div>
 
 
