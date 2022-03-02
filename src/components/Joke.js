@@ -11,8 +11,8 @@ function JokeParts(props) {
 
     return (
         <div>
-            Setup 6 {props.setup && <h3>{props.setup}</h3>}
-            <section>Punchline <button onClick={toggleShown} >Show Punchline</button> {isShown && <p>{props.punchline}</p>}</section>
+            Setup 7 {props.setup && <h3>{props.setup}</h3>}
+            <section>Punchline <button onClick={toggleShown} >{isShown ? "Hide" : "Show"} Punchline</button> {isShown && <p>{props.punchline}</p>}</section>
             
             <hr />
         </div>
