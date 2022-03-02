@@ -1,0 +1,40 @@
+
+.form--input {
+    background-color: purple;
+    margin: 5px;
+    padding: 20px;
+    
+}
+
+.form--elements {
+    display: block;
+    width: 50%;
+
+    color: aquamarine;
+    background-color: black;
+    margin-bottom: 15px;
+    border: 1px solid plum;
+
+    height: 30px;
+    text-indent: 10px;
+    border-radius: 5px;
+
+}
+
+.textarea--element {
+    margin-bottom: 5px;
+    border: 2px solid yellowgreen;
+    border-radius: 5px;
+    display: block;
+    
+    width: 100%;
+    height: 100%;
+}
+
+.checkbox--area {
+    display: flex;
+    justify-content: flex-start;
+    margin-block-start: 15px;
+
+    color: greenyellow
+}

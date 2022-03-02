@@ -12,8 +12,17 @@ import memesData from './memesData.js'
 //        <SquareElements />
 //    </div>
 
-import './joke.css';
-import Joke from './Joke.js'
+// import './joke.css';
+// import Joke from './Joke.js'
+//    <div>
+//        <Joke />
+//    </div>
+
+import Form from './Form.js'
+//    <div>
+//        <SquareElements />
+//    </div>
+
 
 export default function MemeMainContent() {
 
@@ -53,7 +62,7 @@ export default function MemeMainContent() {
     return (
         <main>
             <div>
-                <Joke />
+                <Form />
             </div>
             <div className="form">
                 <input 
