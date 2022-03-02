@@ -35,7 +35,7 @@ main {
     font-weight: 500;
 }
 
-.form {
+.meme--form {
     display: grid;
     grid-template: 40px 40px / 1fr 1fr;
     gap: 10px;
@@ -65,30 +65,49 @@ main {
 }
 
 .meme--image {
-    position: relative;
-    top: -50%;
+    border-radius: 3px;
     max-width: 100%;
     max-height: 100%;
 }
 
-.top--text {
-    color: purple;
-    font-size: 5rem;
-
+.meme--text {
+    color: white;
+    margin: 15px 0;
+    padding: 0 5px;
+    
     position: absolute;
+    left: 50%;
+    width: 80%;
+    transform: translateX(-50%);
+
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+
+}
+
+.top--text {
     top: 10%;
-    left: 40%;
-    transform: translate(-10%, -50%);
 }
 
 .bottom--text {
-    color: green;
-    font-size: 5rem;
+    bottom: 5%;
 
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -90%);
+    color: green;
+
 }
 
 .thing--list {
