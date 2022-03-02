@@ -15,7 +15,7 @@ export default function Form() {
         }
     )
     
-    console.log(`formData is ${JSON.stringify(formData)}`)
+    // console.log(`formData is ${JSON.stringify(formData)}`)
 
     function handleChange(event) {
         const {name, value, type, checked} = event.target
@@ -27,9 +27,14 @@ export default function Form() {
             }
         })
     }
+
+    function handleSubmit(event) {
+        event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
+        console.log(`Submit of data is ${JSON.stringify(formData)}`)
+    }
     
     return (
-        <form className="form--input">
+        <form className="form--input" onSubmit={handleSubmit}>
             <text>3/02/22 Scrimba testing Form</text>
             <input
                 className="form--elements"
@@ -140,7 +145,9 @@ export default function Form() {
                 <option value="indigo">Indigo</option>
                 <option value="violet">Violet</option>
             </select>
-
+            <br />
+            <br />
+            <button>Send it in</button>
         </form>
     )
 }

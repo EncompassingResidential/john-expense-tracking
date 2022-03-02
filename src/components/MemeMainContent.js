@@ -23,6 +23,11 @@ import Form from './Form.js'
 //        <Form />
 //    </div>
 
+import JoinNewsLetter from './JoinNewsLetter.js'
+//    <div>
+//        <JoinNewsLetter />
+//    </div>
+
 
 export default function MemeMainContent() {
 
@@ -63,6 +68,9 @@ export default function MemeMainContent() {
         <main>
             <div>
                 <Form />
+            </div>
+            <div>
+                <JoinNewsLetter />
             </div>
             <div className="form">
                 <input 
