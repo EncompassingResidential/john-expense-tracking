@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Karla", sans-serif;
+    margin: 0;
+}
+
+main {
+    padding: 36px;
+    background-image: url(../images/NC_Home.JPG);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    color: white;
+    padding: 20px;
+}
+
+.header--image {
+    height: 120%;
+    margin-right: 6px;
+    border-radius: 50px;
+}
+
+.header--title {
+    font-size: 1.25rem;
+    margin-right: auto;
+}
+
+.header--project {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.meme--form {
+    display: grid;
+    grid-template: 40px 40px / 1fr 1fr;
+    gap: 10px;
+}
+
+.form--input {
+    font-family: "Karla", sans-serif;
+    border-radius: 25px;
+    border: 2px solid #A626D3;
+    text-indent: 5px;
+}
+
+.form--button {
+    grid-column: 1 / -1;
+    font-family: "Karla", sans-serif;
+    border-radius: 25px;
+    background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.image--container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.meme--image {
+    border-radius: 3px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.meme--text {
+    color: white;
+    margin: 15px 0;
+    padding: 0 5px;
+    
+    position: absolute;
+    left: 50%;
+    width: 80%;
+    transform: translateX(-50%);
+
+    font-family: impact, sans-serif;
+    font-size: 2em;
+    
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+
+}
+
+.top--text {
+    top: 10%;
+}
+
+.bottom--text {
+    bottom: 5%;
+
+    color: green;
+
+}
+
+.thing--list {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+}
+
+.thing--item {
+    min-width: 75px;
+    border-radius: 25px;
+    background-color: rgb(92, 5, 5);
+}

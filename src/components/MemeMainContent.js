@@ -2,6 +2,13 @@ import React from 'react';
 
 import memesData from './memesData.js'
 
+// import './DiaryApp.css';
+// import DiaryHeader from './DiaryHeader.js'
+// import DiaryMainContent from './DiaryMainContent.js'
+      // <DiaryHeader />
+      // <DiaryMainContent />
+
+
 // import ReactArrayStuff from './ReactArrayStuff.js'
 //    <div>
 //        <ReactArrayStuff />
