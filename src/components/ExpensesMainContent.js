@@ -1,81 +1,160 @@
 import React from 'react';
 
-import expensesData from './expensesData.js'
+import expensesDataStorage from './expensesData.js'
 
 export default function ExpensesMainContent() {
 
-    const [meme, setMeme] = React.useState({
-        topText: "",
-        bottomText: "",
-        randomImage: "http://i.imgflip.com/1bij.jpg"
-    })
+    const [expensesState, setExpensesState] = React.useState({
+        id: `${Date.now()}`,
+        dateSpent: Date("1/1/2000"),
+        amount: 0.0,
+        expenseVendor: "",
+        expenseDescription: "",
+        isFillingIn: false,
+        yagni: true
+        }
+    )
 
-    const [allMemeImages, setAllMemeImages] = React.useState(expensesData)
+    const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage.expenses)
+
 
     function handleChange(event) {
         const {name, value} = event.target
 
-        setMeme(prevMeme => {
+        setExpensesState(prevExpenseState => {
             return {
-                ...prevMeme,
-                [name]: value
+                ...prevExpenseState,
+                [name]: value,
+                isFillingIn: true
             }
         })
     }
 
-    function getMemeImage() {
-
-        const memesArray = allMemeImages.data.memes
-        const randomNumber = Math.floor(Math.random() * memesArray.length)
-        const url = memesArray[randomNumber].url
-
-        setMeme(prevMeme => ({
-            ...prevMeme,
-            randomImage: url
-        }))
-           
-    }
+    function printOutArray() {
+        console.log(Date.now() + " \n\nJSON.stringify(expensesState)")
+        console.log(JSON.stringify(expensesState))
     
-    console.log("meme " + JSON.stringify(meme))
-    // console.log("allMemeImages " + JSON.stringify(allMemeImages))
+        console.log("\nJSON.stringify(allExpensesArray)")
+        console.log(JSON.stringify(allExpensesArray))
+        console.log()
+    
+    }
+ 
+    function addExpense(event) {
+
+        setAllExpensesArray(prevExpenseArray => {
+            return [
+            ...prevExpenseArray,
+            {
+            id: expensesState.id,
+            dateSpent: expensesState.dateSpent,
+            amount: expensesState.amount,
+            expenseVendor: expensesState.expenseVendor,
+            expenseDescription: expensesState.expenseDescription,
+            yagni: expensesState.yagni
+            }
+        ]
+        }
+        )
+
+        setExpensesState(prevExpenseState => {
+            return {
+                ...prevExpenseState,
+                id: `${Date.now()}`,
+                dateSpent: Date("1/1/2000"),
+                amount: 0.0,
+                expenseVendor: "",
+                expenseDescription: "",
+                isFillingIn: false,
+                yagni: true
+            }
+        })
+
+        printOutArray()
+    }
+
+    function deleteExpense(props) {
+        console.log("deleteExpense(props) \n" + JSON.stringify(props))
+
+        setAllExpensesArray(prevExpenseArray => {
+            return prevExpenseArray.filter( item => 
+                { return( item.id !== props ) }
+            )
+        }
+        )
+
+        printOutArray()
+    }
+
+    const expensesElementsToRender = allExpensesArray.map((expense) => {
+        return (
+            <div 
+                key={expense.id}
+                className="expense--row"
+            >
+                <p>On {expense.dateSpent}</p>
+                <p>$ {expense.amount}</p>
+                <p>Where: {expense.expenseVendor}</p>
+                <p>Desc: {expense.expenseDescription}</p>
+                <button
+                    className="expense--delete--button"
+                    onClick={() => deleteExpense(expense.id)}
+                    key={expense.id}                 
+                >Delete This Expense {expense.amount}</button>
+                
+            </div>
+        )
+    })
+
+    function handleSubmit(event) {
+        event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
+        console.log(`Submit of data is ${JSON.stringify(expensesState)}`)
+    }
+
+    // console.log("expensesState " + JSON.stringify(expensesState))
     
     return (
         <main>
-            <div className="meme--form">
-                <input 
-                    className="form--input"
+            <form className="expenses--input--form" onSubmit={handleSubmit}>
+                <text>3/02/22 Expenses Input Form 9:21 8:30 8:18 8:13 am</text>
+                <label 
+                    htmlFor="amount"
+                    className="expenses--input--label"
+                >Amount Paid</label>
+                <input
+                    id="amount"
+                    className="expenses--input--elements"
                     type="text"
-                    placeholder="Top text"
+                    placeholder="Amount Paid"
                     onChange={handleChange}
-                    name="topText"
-                    value={meme.topText}
-                    id="top_text_input"
+                    name="amount"
+                    value={expensesState.amount} // This "value={}" is how to impliment React controlled components
                 />
-                <input 
-                    className="form--input"
+                <label 
+                    htmlFor="expenseVendor"
+                    className="expenses--input--label"
+                >Who did you pay?</label>
+                <input
+                    className="expenses--input--elements"
+                    id="expenseVendor"
                     type="text"
-                    placeholder="Bottom text"
+                    placeholder="Type Who you paid"
                     onChange={handleChange}
-                    name="bottomText"
-                    value={meme.bottomText}
-                    id="bottom_text_input"
+                    name="expenseVendor"
+                    value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
                 />
                 <button
-                    className="form--button"
-                    onClick={getMemeImage}
+                    className="add--expense--button"
+                    onClick={addExpense}
                 >
-                    Get a new meme image 🖼 Finished 3/02/2022
+                    Add Your Expense $ ⇥ Started 3/02/2022
                 </button>
+
+            </form>
+            <div className="expenses--list">
+                {expensesElementsToRender}
             </div>
-            <div className="image--container">
-                <p>{meme.randomImage} </p>
-                <img 
-                    src={meme.randomImage}
-                    className="meme--image"
-                />
-                <div className="meme--text top--text" id="top_text_id">{meme.topText}</div>
-                <div className="meme--text bottom--text" id="bottom_text_id">{meme.bottomText}</div>
-            </div>
+
         </main>
     )
 }

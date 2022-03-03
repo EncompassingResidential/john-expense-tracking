@@ -10,13 +10,16 @@ import React, { useState} from 'react';
 
 // All React coding goes in the src directory.
 
-export default function App() {
-  return (
-      <div className="app--main"
+/*
+<div className="app--main"
             style={{ backgroundImage: `url(${background})` }}
       >
+*/
+
+export default function App() {
+  return (
+    <div className="app--main">      
       <ExpensesHeader />
-      <p>HEllo there</p>
       <ExpensesMainContent />
     </div>
   )

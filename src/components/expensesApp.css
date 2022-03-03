@@ -8,11 +8,7 @@ body {
 }
 
 main {
-    padding: 36px;
-    background-image: url(../images/NC_Home.JPG);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    padding: 6px;
 }
 
 .header {
@@ -40,89 +36,64 @@ main {
     font-weight: 500;
 }
 
-.meme--form {
+
+.expenses--input--form {
     display: grid;
-    grid-template: 40px 40px / 1fr 1fr;
+    flex-direction: column;
+    
+    background-color: lightseagreen;
     gap: 10px;
+    border-radius: 25px;
+    
 }
 
-.form--input {
+.expenses--input--elements {
     font-family: "Karla", sans-serif;
     border-radius: 25px;
     border: 2px solid #A626D3;
     text-indent: 5px;
+    margin-left: 15px;
 }
 
-.form--button {
-    grid-column: 1 / -1;
+.add--expense--button {
+    
     font-family: "Karla", sans-serif;
     border-radius: 25px;
+    margin-left: 55px;
+    margin-bottom: 15px;
+
+    box-shadow: 0 0 0 1px #163772 inset,0 0 0 2px rgba(255, 255, 255, 0.15) inset,0 4px 0 0      #333797,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);
+
     background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
     color: white;
     border: none;
     cursor: pointer;
+    max-width: fit-content;
+
 }
 
-.image--container {
+.expenses--list {
     position: relative;
     text-align: center;
-    color: white;
+    color: rgb(212, 126, 212);
+    background-color: #A626D3;
+    border: 2px solid yellowgreen;
+    border-radius: 25px;
+
+    font-family: sans-serif;
+    font-size: .75rem;
+
 }
 
-.meme--image {
-    border-radius: 3px;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.meme--text {
-    color: white;
+.expense--row {
+    background-color: black;
     margin: 15px 0;
     padding: 0 5px;
-    
-    position: absolute;
-    left: 50%;
-    width: 80%;
-    transform: translateX(-50%);
-
-    font-family: impact, sans-serif;
-    font-size: 2em;
-    
-    letter-spacing: 1px;
-    text-align: center;
-    text-transform: uppercase;
-    text-shadow:
-        2px 2px 0 #000,
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        0 2px 0 #000,
-        2px 0 0 #000,
-        0 -2px 0 #000,
-        -2px 0 0 #000,
-        2px 2px 5px #000;
-
-}
-
-.top--text {
-    top: 10%;
-}
-
-.bottom--text {
-    bottom: 5%;
-
-    color: green;
-
-}
-
-.thing--list {
-    display: flex;
-    flex-direction: row;
-    align-items:flex-end;
-}
-
-.thing--item {
-    min-width: 75px;
+    border: 2px solid yellowgreen;
     border-radius: 25px;
-    background-color: rgb(92, 5, 5);
+    
+}
+
+.expense--delete--button {
+    box-shadow: 0 0 0 1px #163772 inset,0 0 0 2px rgba(255, 255, 255, 0.15) inset,0 4px 0 0      #333797,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);   
 }
