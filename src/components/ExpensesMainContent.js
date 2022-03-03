@@ -2,19 +2,52 @@ import React from 'react';
 
 import expensesDataStorage from './expensesData.js'
 
+let expensesStateDisk = JSON.parse(localStorage.getItem('expensesStateStorage')) || [];
+
+let initialExpensesState = {
+    id: `${Date.now()}`,
+    dateSpent: Date("1/1/2000"),
+    amount: 0.0,
+    expenseVendor: "",
+    expenseDescription: "",
+    yagni: true
+}
+
+
 export default function ExpensesMainContent() {
 
-    const [expensesState, setExpensesState] = React.useState({
-        id: `${Date.now()}`,
-        dateSpent: Date("1/1/2000"),
-        amount: 0.0,
-        expenseVendor: "",
-        expenseDescription: "",
-        yagni: true
-        }
-    )
+    if (expensesStateDisk !== [] && typeof expensesStateDisk === "object") {
+//        console.log(`          if (expensesStateDisk !== [] && typeof expensesStateDisk === "object")`)
+  //      console.log("          typeof expensesStateDisk === " + typeof expensesStateDisk)
+        initialExpensesState = expensesStateDisk
+    } else {
+    //    console.log('          if (expensesStateDisk === [] || expensesStateDisk.length <= 0 || typeof expensesStateDisk !== "object")')
+      //  console.log("          typeof expensesStateDisk === " + typeof expensesStateDisk)
+    }
+
+    const [expensesState, setExpensesState] = React.useState(initialExpensesState)
 
     const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage.expenses)
+
+    function clearLocalStorage() {
+        localStorage.clear();
+    }
+    
+    function writeArraysToLocalStorage() {
+        //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(expensesState)")
+        //console.log(JSON.stringify(expensesState))
+
+        setExpensesState(prevExpenseState => {
+            //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(prevExpenseState)")
+            //console.log(JSON.stringify(prevExpenseState))
+            localStorage.setItem('expensesStateStorage', JSON.stringify(prevExpenseState))
+            return {
+                ...prevExpenseState
+            }
+        })
+        
+        //console.log("writeArraysToLocalStorage JSON.stringify(expensesState) @ " + Date.now())
+    }
 
     function convert_to_float(b) {
         // Type conversion of string to float
@@ -33,6 +66,7 @@ export default function ExpensesMainContent() {
             }
         })
         
+        writeArraysToLocalStorage()
     }
     
     function formatToStringMoneyAmount(amountFloat) {
@@ -52,6 +86,7 @@ export default function ExpensesMainContent() {
     }
 
     function printOutArrays() {
+        console.log("    function printOutArrays")
         console.log(Date.now() + " \n\nJSON.stringify(expensesState)")
         console.log(JSON.stringify(expensesState))
     
@@ -59,6 +94,7 @@ export default function ExpensesMainContent() {
         console.log(JSON.stringify(allExpensesArray))
         console.log()
     
+    writeArraysToLocalStorage()
     }
  
     function addExpense(event) {
@@ -101,6 +137,8 @@ export default function ExpensesMainContent() {
         }
         )
 
+        clearLocalStorage()
+        // writeArraysToLocalStorage()
     }
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
