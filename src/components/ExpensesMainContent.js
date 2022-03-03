@@ -144,7 +144,9 @@ export default function ExpensesMainContent() {
         })
 
         writeExpenseStateToLocalStorage()
-        // writeExpensesArrayToLocalStorage()
+
+        // Zanny - COMMENT THIS OUT and the rest of the code works
+        writeExpensesArrayToLocalStorage()
     }
 
     function deleteExpense(props) {
