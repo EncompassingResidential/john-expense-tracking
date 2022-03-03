@@ -17,9 +17,17 @@ export default function ExpensesMainContent() {
 
     const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage.expenses)
 
+    function convert_to_float(b) {
+        // Type conversion of string to float
+        var floatValue = +(b);
+        // Return float value
+        return floatValue;
+    }
 
     function handleChange(event) {
         const {name, value} = event.target
+
+        console.log(`name ${name} === "amount"`)
 
         setExpensesState(prevExpenseState => {
             return {
@@ -28,6 +36,31 @@ export default function ExpensesMainContent() {
                 isFillingIn: true
             }
         })
+        
+    }
+    
+    console.log(Date.now() + " \n\nJSON.stringify(expensesState)")
+    console.log(JSON.stringify(expensesState))
+
+    function formatToStringMoneyAmount(amountFloat) {
+        /*
+        console.log(`\nformatToStringMoneyAmount`)
+        console.log(`typeof amountFloat is ${typeof amountFloat}\n`)
+        console.log(`amountFloat is ${amountFloat}\n`)
+        console.log(`Number.isFinite(amountFloat) is ${Number.isFinite(amountFloat)}\n`)
+        */
+
+       // const amountFloatNumber = toFloat(amountFloat)
+
+       if (Number.isFinite(amountFloat) === true) {
+            const fixedDecimals = amountFloat.toFixed(2)
+            const formatedNumber = fixedDecimals.toLocaleString("en-US")
+            // console.log(`returning "$ " + ${formatedNumber}`)
+            return("$ " + formatedNumber)
+        } else {
+            // console.log(`returning only "$ "`)
+            return("$ ")
+        }
     }
 
     function printOutArray() {
@@ -48,7 +81,7 @@ export default function ExpensesMainContent() {
             {
             id: expensesState.id,
             dateSpent: expensesState.dateSpent,
-            amount: expensesState.amount,
+            amount: convert_to_float(expensesState.amount),
             expenseVendor: expensesState.expenseVendor,
             expenseDescription: expensesState.expenseDescription,
             yagni: expensesState.yagni
@@ -70,7 +103,6 @@ export default function ExpensesMainContent() {
             }
         })
 
-        printOutArray()
     }
 
     function deleteExpense(props) {
@@ -83,7 +115,6 @@ export default function ExpensesMainContent() {
         }
         )
 
-        printOutArray()
     }
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
@@ -92,23 +123,35 @@ export default function ExpensesMainContent() {
                 key={expense.id}
                 className="expense--row"
             >
-                <p>On {expense.dateSpent}</p>
-                <p>$ {expense.amount}</p>
-                <p>Where: {expense.expenseVendor}</p>
-                <p>Desc: {expense.expenseDescription}</p>
+                <div
+                    className="expense--row--data"
+                >
+                    <p
+                        className="expense--row--dataitems"
+                    >On {expense.dateSpent}</p>
+                    <p
+                        className="expense--row--dataitems"
+                    >{formatToStringMoneyAmount(expense.amount)}</p>
+                    <p
+                        className="expense--row--dataitems"
+                    >Where: {expense.expenseVendor}</p>
+                    <p
+                        className="expense--row--dataitems"
+                    >Desc: {expense.expenseDescription}</p>
+                </div>
                 <button
                     className="expense--delete--button"
                     onClick={() => deleteExpense(expense.id)}
                     key={expense.id}                 
-                >Delete This Expense {expense.amount}</button>
-                
+                >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount)}</button>                
             </div>
         )
     })
 
     function handleSubmit(event) {
         event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
-        console.log(`Submit of data is ${JSON.stringify(expensesState)}`)
+
+        printOutArray()
     }
 
     // console.log("expensesState " + JSON.stringify(expensesState))
@@ -116,14 +159,31 @@ export default function ExpensesMainContent() {
     return (
         <main>
             <form className="expenses--input--form" onSubmit={handleSubmit}>
-                <text>3/02/22 Expenses Input Form 9:21 8:30 8:18 8:13 am</text>
+                <p 
+                    className="expenses--input--label"
+                >3/02/22 Expenses Input Form 1:02 pm 9:21 8:30 8:18 8:13 am</p>
+                
+                <label 
+                    htmlFor="dateSpent"
+                    className="expenses--input--label"
+                >Date you paid</label>
+                <input
+                    id="dateSpent"
+                    className="expenses--input--elements expenses--input--datespent"
+                    type="date"
+                    placeholder="Date you Paid"
+                    onChange={handleChange}
+                    name="dateSpent"
+                    value={expensesState.dateSpent} // This "value={}" is how to impliment React controlled components
+                />
+
                 <label 
                     htmlFor="amount"
                     className="expenses--input--label"
                 >Amount Paid</label>
                 <input
                     id="amount"
-                    className="expenses--input--elements"
+                    className="expenses--input--elements expenses--input--amount"
                     type="text"
                     placeholder="Amount Paid"
                     onChange={handleChange}
@@ -143,6 +203,20 @@ export default function ExpensesMainContent() {
                     name="expenseVendor"
                     value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
                 />
+                <label 
+                    htmlFor="expenseDescription"
+                    className="expenses--input--label"
+                >Type a description of what you paid</label>
+                <textarea
+                    className="expenses--input--elements"
+                    id="expenseDescription"
+                    type="textArea"
+                    placeholder="Type a description of what you paid"
+                    onChange={handleChange}
+                    name="expenseDescription"
+                    value={expensesState.expenseDescription}  // React sometimes will complain that there are un-controlled components if this isn't done.
+                />
+                
                 <button
                     className="add--expense--button"
                     onClick={addExpense}

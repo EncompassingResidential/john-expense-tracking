@@ -41,10 +41,16 @@ main {
     display: grid;
     flex-direction: column;
     
+    margin-left: 15px;
     background-color: lightseagreen;
-    gap: 10px;
+    gap: 2px;
     border-radius: 25px;
     
+}
+
+.expenses--input--label {
+    margin-left: 15px;
+
 }
 
 .expenses--input--elements {
@@ -55,6 +61,14 @@ main {
     margin-left: 15px;
 }
 
+.expenses--input--datespent {
+    max-width: 140px;
+}
+
+.expenses--input--amount {
+    max-width: 200px;
+}
+
 .add--expense--button {
     
     font-family: "Karla", sans-serif;
@@ -62,7 +76,11 @@ main {
     margin-left: 55px;
     margin-bottom: 15px;
 
-    box-shadow: 0 0 0 1px #163772 inset,0 0 0 2px rgba(255, 255, 255, 0.15) inset,0 4px 0 0      #333797,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px #163772 inset,
+                0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+                0 4px 0 0      #333797,
+                0 4px 0 1px rgba(0, 0, 0, 0.4),
+                0 4px 4px 1px rgba(0, 0, 0, 0.5);
 
     background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
     color: white;
@@ -75,9 +93,11 @@ main {
 .expenses--list {
     position: relative;
     text-align: center;
-    color: rgb(212, 126, 212);
+    color: black;
     background-color: #A626D3;
-    border: 2px solid yellowgreen;
+
+    margin-top: 2px;
+    border: 2px solid lightseagreen;
     border-radius: 25px;
 
     font-family: sans-serif;
@@ -86,14 +106,54 @@ main {
 }
 
 .expense--row {
-    background-color: black;
-    margin: 15px 0;
-    padding: 0 5px;
-    border: 2px solid yellowgreen;
+    display: flex;
+    align-items: row;
+
+    background-color: grey;
+
+    margin: 5px 4px;
+
+    border: 2px solid lightseagreen;
     border-radius: 25px;
     
 }
 
+.expense--row--data {
+    display: grid;
+    grid-template-rows: 50px 50px;
+    grid-template-columns: 200px 300px;
+
+    border: 2px solid rgb(26, 128, 122);
+    border-radius: 25px;
+
+}
+
+.expense--row--dataitems {
+    border: 2px solid rgb(19, 90, 85);
+    border-radius: 25px;
+    border-style: dashed;
+
+    min-width: 200px;
+    min-height: 40px;
+    width:fit-content;
+    height:fit-content;
+
+    padding: 4px
+}
+
 .expense--delete--button {
+    font-size: .5rem;
+    white-space: normal;
+
+    color: greenyellow;
+    background-color: red;
+
+    padding: 10px;
+    min-width: 85px;
+    max-width: 50px;
+    margin: 10px 10px;
+
+    border-radius: 15px;
+
     box-shadow: 0 0 0 1px #163772 inset,0 0 0 2px rgba(255, 255, 255, 0.15) inset,0 4px 0 0      #333797,0 4px 0 1px rgba(0, 0, 0, 0.4),0 4px 4px 1px rgba(0, 0, 0, 0.5);   
 }
