@@ -10,7 +10,6 @@ export default function ExpensesMainContent() {
         amount: 0.0,
         expenseVendor: "",
         expenseDescription: "",
-        isFillingIn: false,
         yagni: true
         }
     )
@@ -27,43 +26,32 @@ export default function ExpensesMainContent() {
     function handleChange(event) {
         const {name, value} = event.target
 
-        console.log(`name ${name} === "amount"`)
-
         setExpensesState(prevExpenseState => {
             return {
                 ...prevExpenseState,
-                [name]: value,
-                isFillingIn: true
+                [name]: value
             }
         })
         
     }
     
-    console.log(Date.now() + " \n\nJSON.stringify(expensesState)")
-    console.log(JSON.stringify(expensesState))
-
     function formatToStringMoneyAmount(amountFloat) {
-        /*
-        console.log(`\nformatToStringMoneyAmount`)
-        console.log(`typeof amountFloat is ${typeof amountFloat}\n`)
-        console.log(`amountFloat is ${amountFloat}\n`)
-        console.log(`Number.isFinite(amountFloat) is ${Number.isFinite(amountFloat)}\n`)
-        */
-
-       // const amountFloatNumber = toFloat(amountFloat)
 
        if (Number.isFinite(amountFloat) === true) {
             const fixedDecimals = amountFloat.toFixed(2)
-            const formatedNumber = fixedDecimals.toLocaleString("en-US")
-            // console.log(`returning "$ " + ${formatedNumber}`)
-            return("$ " + formatedNumber)
+            const formatedNumber = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD"
+            }).format(fixedDecimals)
+
+            return(formatedNumber)
         } else {
-            // console.log(`returning only "$ "`)
-            return("$ ")
+
+            return("Error - $ amount is not number")
         }
     }
 
-    function printOutArray() {
+    function printOutArrays() {
         console.log(Date.now() + " \n\nJSON.stringify(expensesState)")
         console.log(JSON.stringify(expensesState))
     
@@ -94,11 +82,10 @@ export default function ExpensesMainContent() {
             return {
                 ...prevExpenseState,
                 id: `${Date.now()}`,
-                dateSpent: Date("1/1/2000"),
+                // dateSpent: Date("1/1/2000"),
                 amount: 0.0,
                 expenseVendor: "",
                 expenseDescription: "",
-                isFillingIn: false,
                 yagni: true
             }
         })
@@ -106,7 +93,6 @@ export default function ExpensesMainContent() {
     }
 
     function deleteExpense(props) {
-        console.log("deleteExpense(props) \n" + JSON.stringify(props))
 
         setAllExpensesArray(prevExpenseArray => {
             return prevExpenseArray.filter( item => 
@@ -151,10 +137,8 @@ export default function ExpensesMainContent() {
     function handleSubmit(event) {
         event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
 
-        printOutArray()
+        printOutArrays()
     }
-
-    // console.log("expensesState " + JSON.stringify(expensesState))
     
     return (
         <main>
