@@ -3,7 +3,7 @@ export default {
     expenses: [
         {
             id: "181913649",
-            dateSpent: Date("2/23/2022"),
+            dateSpent: "2022-2-23",
             amount: 362.2,
             expenseVendor: "Meme generator Company",
             expenseDescription: "1200 things I didn't need",
@@ -11,7 +11,7 @@ export default {
         },
         {
             id: "87743020",
-            dateSpent: Date("1/15/2022"),
+            dateSpent: "2022-1-15",
             amount: 3378.71,
             expenseVendor: "Used Car Dealership",
             expenseDescription: "Got a great deal with Mohamad",
@@ -19,7 +19,7 @@ export default {
         },
         {
             id: "112126428",
-            dateSpent: Date("12/3/2021"),
+            dateSpent: "2021-12-3",
             amount: 76.,
             expenseVendor: "Restaurant at the End of the Universe",
             expenseDescription: "Why am I doing this if it's the END!",

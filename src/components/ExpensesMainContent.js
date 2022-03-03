@@ -1,8 +1,10 @@
 import React from 'react';
 
-import expensesDataStorage from './expensesData.js'
+import expensesDataStorageTest from './expensesData.js'
 
 let expensesStateDisk = JSON.parse(localStorage.getItem('expensesStateStorage')) || [];
+let expensesArrayDisk = JSON.parse(localStorage.getItem('expensesArrayStorage')) || [];
+let expensesDataStorage = []
 
 let initialExpensesState = {
     id: `${Date.now()}`,
@@ -17,23 +19,24 @@ let initialExpensesState = {
 export default function ExpensesMainContent() {
 
     if (expensesStateDisk !== [] && typeof expensesStateDisk === "object") {
-//        console.log(`          if (expensesStateDisk !== [] && typeof expensesStateDisk === "object")`)
-  //      console.log("          typeof expensesStateDisk === " + typeof expensesStateDisk)
         initialExpensesState = expensesStateDisk
+    }
+
+    if (expensesArrayDisk !== [] && typeof expensesArrayDisk === "array") {
+        expensesDataStorage = expensesArrayDisk
     } else {
-    //    console.log('          if (expensesStateDisk === [] || expensesStateDisk.length <= 0 || typeof expensesStateDisk !== "object")')
-      //  console.log("          typeof expensesStateDisk === " + typeof expensesStateDisk)
+        expensesDataStorage = expensesDataStorageTest.expenses
     }
 
     const [expensesState, setExpensesState] = React.useState(initialExpensesState)
 
-    const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage.expenses)
+    const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage)
 
     function clearLocalStorage() {
         localStorage.clear();
     }
     
-    function writeArraysToLocalStorage() {
+    function writeExpenseStateToLocalStorage() {
         //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(expensesState)")
         //console.log(JSON.stringify(expensesState))
 
@@ -46,7 +49,23 @@ export default function ExpensesMainContent() {
             }
         })
         
-        //console.log("writeArraysToLocalStorage JSON.stringify(expensesState) @ " + Date.now())
+        //console.log("writeExpenseStateToLocalStorage JSON.stringify(expensesState) @ " + Date.now())
+    }
+
+    function writeExpensesArrayToLocalStorage() {
+        //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(allExpensesArray)")
+        //console.log(JSON.stringify(allExpensesArray))
+
+        setAllExpensesArray(prevAllExpensesArray => {
+            //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(prevAllExpensesArray)")
+            //console.log(JSON.stringify(prevAllExpensesArray))
+            localStorage.setItem('expensesArrayStorage', JSON.stringify(prevAllExpensesArray))
+            return {
+                ...prevAllExpensesArray
+            }
+        })
+        
+        //console.log("writeExpenseStateToLocalStorage JSON.stringify(allExpensesArray) @ " + Date.now())
     }
 
     function convert_to_float(b) {
@@ -66,7 +85,7 @@ export default function ExpensesMainContent() {
             }
         })
         
-        writeArraysToLocalStorage()
+        writeExpenseStateToLocalStorage()
     }
     
     function formatToStringMoneyAmount(amountFloat) {
@@ -93,15 +112,13 @@ export default function ExpensesMainContent() {
         console.log("\nJSON.stringify(allExpensesArray)")
         console.log(JSON.stringify(allExpensesArray))
         console.log()
-    
-    writeArraysToLocalStorage()
     }
  
     function addExpense(event) {
 
-        setAllExpensesArray(prevExpenseArray => {
+        setAllExpensesArray(prevAllExpensesArray => {
             return [
-            ...prevExpenseArray,
+            ...prevAllExpensesArray,
             {
             id: expensesState.id,
             dateSpent: expensesState.dateSpent,
@@ -126,19 +143,20 @@ export default function ExpensesMainContent() {
             }
         })
 
+        writeExpenseStateToLocalStorage()
+        // writeExpensesArrayToLocalStorage()
     }
 
     function deleteExpense(props) {
 
-        setAllExpensesArray(prevExpenseArray => {
-            return prevExpenseArray.filter( item => 
+        setAllExpensesArray(prevAllExpensesArray => {
+            return prevAllExpensesArray.filter( item => 
                 { return( item.id !== props ) }
             )
         }
         )
 
         clearLocalStorage()
-        // writeArraysToLocalStorage()
     }
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
