@@ -134,9 +134,9 @@ export default function ExpensesMainContent() {
             return prevAllExpensesArray.filter( item => 
                 { return( item.id !== props ) }
             )
-        }
-        )
+        })
 
+        writeExpensesArrayToLocalStorage()
         writeExpensesArrayToLocalStorage()
     }
 
@@ -166,7 +166,7 @@ export default function ExpensesMainContent() {
                     className="expense--delete--button"
                     onClick={() => deleteExpense(expense.id)}
                     key={expense.id}                 
-                >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount)}</button>                
+                >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount).slice(0,11)}</button>                
             </div>
         )
     })
