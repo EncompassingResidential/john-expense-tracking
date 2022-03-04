@@ -142,7 +142,7 @@ main {
 }
 
 .expense--delete--button {
-    font-size: .5rem;
+    font-size: .75rem;
     white-space: normal;
 
     color: greenyellow;

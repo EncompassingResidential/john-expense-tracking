@@ -22,7 +22,7 @@ export default function ExpensesMainContent() {
         initialExpensesState = expensesStateDisk
     }
 
-    if (expensesArrayDisk !== [] && typeof expensesArrayDisk === "array") {
+    if (expensesArrayDisk.length > 0) {
         expensesDataStorage = expensesArrayDisk
     } else {
         expensesDataStorage = expensesDataStorageTest.expenses
@@ -37,37 +37,20 @@ export default function ExpensesMainContent() {
     }
     
     function writeExpenseStateToLocalStorage() {
-        //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(expensesState)")
-        //console.log(JSON.stringify(expensesState))
 
         setExpensesState(prevExpenseState => {
-            //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(prevExpenseState)")
-            //console.log(JSON.stringify(prevExpenseState))
             localStorage.setItem('expensesStateStorage', JSON.stringify(prevExpenseState))
             return {
                 ...prevExpenseState
             }
-        })
-        
-        //console.log("writeExpenseStateToLocalStorage JSON.stringify(expensesState) @ " + Date.now())
+        }) 
     }
 
     function writeExpensesArrayToLocalStorage() {
-        //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(allExpensesArray)")
-        //console.log(JSON.stringify(allExpensesArray))
 
-        setAllExpensesArray(prevAllExpensesArray => {
-            //console.log(Date.now() + " \nWritting out this to LocalStorage \n JSON.stringify(prevAllExpensesArray)")
-            //console.log(JSON.stringify(prevAllExpensesArray))
-            localStorage.setItem('expensesArrayStorage', JSON.stringify(prevAllExpensesArray))
-            return {
-                ...prevAllExpensesArray
-            }
-        })
-        
-        //console.log("writeExpenseStateToLocalStorage JSON.stringify(allExpensesArray) @ " + Date.now())
+        localStorage.setItem('expensesArrayStorage', JSON.stringify(allExpensesArray))
     }
-
+        
     function convert_to_float(b) {
         // Type conversion of string to float
         var floatValue = +(b);
@@ -143,10 +126,6 @@ export default function ExpensesMainContent() {
             }
         })
 
-        writeExpenseStateToLocalStorage()
-
-        // Zanny - COMMENT THIS OUT and the rest of the code works
-        writeExpensesArrayToLocalStorage()
     }
 
     function deleteExpense(props) {
@@ -158,7 +137,7 @@ export default function ExpensesMainContent() {
         }
         )
 
-        clearLocalStorage()
+        writeExpensesArrayToLocalStorage()
     }
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
@@ -193,9 +172,13 @@ export default function ExpensesMainContent() {
     })
 
     function handleSubmit(event) {
+
         event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
 
-        printOutArrays()
+        writeExpenseStateToLocalStorage()
+
+        writeExpensesArrayToLocalStorage()
+
     }
     
     return (
