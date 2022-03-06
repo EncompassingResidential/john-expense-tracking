@@ -1,10 +1,17 @@
 import React from 'react';
 
+// import Button from 'react-bootstrap/Button'
+import { Button, Alert, Card, Form } from 'react-bootstrap'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+/*
 import expensesDataStorageTest from './expensesData.js'
 
 let expensesStateDisk = JSON.parse(localStorage.getItem('expensesStateStorage')) || [];
 let expensesArrayDisk = JSON.parse(localStorage.getItem('expensesArrayStorage')) || [];
 let expensesDataStorage = []
+*/
 
 let initialExpensesState = {
     id: `${Date.now()}`,
@@ -18,39 +25,26 @@ let initialExpensesState = {
 
 export default function ExpensesMainContent() {
 
-    if (expensesStateDisk !== [] && typeof expensesStateDisk === "object") {
-        initialExpensesState = expensesStateDisk
-    }
+    const [expensesState, setExpensesState] = React.useState(JSON.parse(localStorage.getItem('expensesStateStorage')) || [])
 
-    if (expensesArrayDisk.length > 0) {
-        expensesDataStorage = expensesArrayDisk
-    } else {
-        expensesDataStorage = expensesDataStorageTest.expenses
-    }
+    const [allExpensesArray, setAllExpensesArray] = React.useState(JSON.parse(localStorage.getItem('expensesArrayStorage')) || [])
 
-    const [expensesState, setExpensesState] = React.useState(initialExpensesState)
+    React.useEffect(() => {
+            console.log("allExpenseArray changed");
+            localStorage.setItem('expensesArrayStorage', JSON.stringify(allExpensesArray))
+        }, [allExpensesArray]
+    );
 
-    const [allExpensesArray, setAllExpensesArray] = React.useState(expensesDataStorage)
+    React.useEffect(() => {
+            console.log("allExpenseArray changed");
+            localStorage.setItem('expensesStateStorage', JSON.stringify(expensesState))
+        }, [expensesState]
+    );
 
     function clearLocalStorage() {
         localStorage.clear();
     }
-    
-    function writeExpenseStateToLocalStorage() {
 
-        setExpensesState(prevExpenseState => {
-            localStorage.setItem('expensesStateStorage', JSON.stringify(prevExpenseState))
-            return {
-                ...prevExpenseState
-            }
-        }) 
-    }
-
-    function writeExpensesArrayToLocalStorage() {
-
-        localStorage.setItem('expensesArrayStorage', JSON.stringify(allExpensesArray))
-    }
-        
     function convert_to_float(b) {
         // Type conversion of string to float
         var floatValue = +(b);
@@ -68,7 +62,6 @@ export default function ExpensesMainContent() {
             }
         })
         
-        writeExpenseStateToLocalStorage()
     }
     
     function formatToStringMoneyAmount(amountFloat) {
@@ -99,6 +92,7 @@ export default function ExpensesMainContent() {
  
     function addExpense(event) {
 
+        console.log("        --->>> addExpense Called from onclick")
         setAllExpensesArray(prevAllExpensesArray => {
             return [
             ...prevAllExpensesArray,
@@ -136,8 +130,6 @@ export default function ExpensesMainContent() {
             )
         })
 
-        writeExpensesArrayToLocalStorage()
-        writeExpensesArrayToLocalStorage()
     }
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
@@ -173,83 +165,71 @@ export default function ExpensesMainContent() {
 
     function handleSubmit(event) {
 
+        console.log("        --->>> handleSubmit Called from form submission");
+
         event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
-
-        writeExpenseStateToLocalStorage()
-
-        writeExpensesArrayToLocalStorage()
 
     }
     
+    // <Card.Img src="https://picsum.photos/300/10" />
     return (
         <main>
-            <form className="expenses--input--form" onSubmit={handleSubmit}>
-                <p 
-                    className="expenses--input--label"
-                >3/02/22 Expenses Input Form 1:02 pm 9:21 8:30 8:18 8:13 am</p>
-                
-                <label 
-                    htmlFor="dateSpent"
-                    className="expenses--input--label"
-                >Date you paid</label>
-                <input
-                    id="dateSpent"
-                    className="expenses--input--elements expenses--input--datespent"
-                    type="date"
-                    placeholder="Date you Paid"
-                    onChange={handleChange}
-                    name="dateSpent"
-                    value={expensesState.dateSpent} // This "value={}" is how to impliment React controlled components
-                />
+            <Form noValidate className="expenses--input--form" onSubmit={handleSubmit}>
+                <Form.Group controlId="formDate">
+                    <Form.Label>Date you paid</Form.Label>
+                    <Form.Control
+                        type="date"
+                        placeholder="Date you Paid"
 
-                <label 
-                    htmlFor="amount"
-                    className="expenses--input--label"
-                >Amount Paid</label>
-                <input
-                    id="amount"
-                    className="expenses--input--elements expenses--input--amount"
-                    type="text"
-                    placeholder="Amount Paid"
-                    onChange={handleChange}
-                    name="amount"
-                    value={expensesState.amount} // This "value={}" is how to impliment React controlled components
-                />
-                <label 
-                    htmlFor="expenseVendor"
-                    className="expenses--input--label"
-                >Who did you pay?</label>
-                <input
-                    className="expenses--input--elements"
-                    id="expenseVendor"
-                    type="text"
-                    placeholder="Type Who you paid"
-                    onChange={handleChange}
-                    name="expenseVendor"
-                    value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
-                />
-                <label 
-                    htmlFor="expenseDescription"
-                    className="expenses--input--label"
-                >Type a description of what you paid</label>
-                <textarea
-                    className="expenses--input--elements"
-                    id="expenseDescription"
-                    type="textArea"
-                    placeholder="Type a description of what you paid"
-                    onChange={handleChange}
-                    name="expenseDescription"
-                    value={expensesState.expenseDescription}  // React sometimes will complain that there are un-controlled components if this isn't done.
-                />
+                        onChange={handleChange}
+                        value={expensesState.dateSpent} // This "value={}" is how to impliment React controlled components
+                        name="dateSpent"
+
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="formAmount">
+                    <Form.Label>Amount Paid</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Amount Paid"
+
+                        onChange={handleChange}
+                        name="amount"
+                        value={expensesState.amount} // This "value={}" is how to impliment React controlled components
+                    />
+                </Form.Group>
+                <Form.Group controlId="formVendor">
+                    <Form.Label>Who did you pay?</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Type Who you paid"
+
+                        onChange={handleChange}
+                        name="expenseVendor"
+                        value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
+                    />
+                </Form.Group>
+                <Form.Group controlId="formTextArea">
+                    <Form.Label>Type a description of what you paid</Form.Label>
+                    <Form.Control 
+                        as="textarea" 
+                        rows={3} 
+                        placeholder="Type a description of what you paid"
+
+                        onChange={handleChange}
+                        name="expenseDescription"
+                        value={expensesState.expenseDescription}  // React sometimes will complain that there are un-controlled components if this isn't done.
+                    />
+                </Form.Group>
                 
-                <button
-                    className="add--expense--button"
+                <Button
                     onClick={addExpense}
                 >
-                    Add Your Expense $ ⇥ Started 3/02/2022
-                </button>
+                    Add Your Expense $ to the list ⇥
+                </Button>
 
-            </form>
+            </Form>
             <div className="expenses--list">
                 {expensesElementsToRender}
             </div>
