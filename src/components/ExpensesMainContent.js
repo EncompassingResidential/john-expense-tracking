@@ -1,16 +1,12 @@
 import React from 'react';
 
 // import Button from 'react-bootstrap/Button'
-import { Button, Alert, Card, Form } from 'react-bootstrap'
+import { Button, Alert, Card, Col, Container, Form, Row } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 /*
 import expensesDataStorageTest from './expensesData.js'
-
-let expensesStateDisk = JSON.parse(localStorage.getItem('expensesStateStorage')) || [];
-let expensesArrayDisk = JSON.parse(localStorage.getItem('expensesArrayStorage')) || [];
-let expensesDataStorage = []
 */
 
 let initialExpensesState = {
@@ -134,32 +130,28 @@ export default function ExpensesMainContent() {
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
         return (
-            <div 
+            <Container fluid 
                 key={expense.id}
-                className="expense--row"
             >
-                <div
-                    className="expense--row--data"
-                >
-                    <p
-                        className="expense--row--dataitems"
-                    >On {expense.dateSpent}</p>
-                    <p
-                        className="expense--row--dataitems"
-                    >{formatToStringMoneyAmount(expense.amount)}</p>
-                    <p
-                        className="expense--row--dataitems"
-                    >Where: {expense.expenseVendor}</p>
-                    <p
-                        className="expense--row--dataitems"
-                    >Desc: {expense.expenseDescription}</p>
-                </div>
-                <button
-                    className="expense--delete--button"
-                    onClick={() => deleteExpense(expense.id)}
-                    key={expense.id}                 
-                >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount).slice(0,11)}</button>                
-            </div>
+                <Row>
+                    <Col>
+                        <Row >
+                            <Col>On {expense.dateSpent}</Col>
+                            <Col>{formatToStringMoneyAmount(expense.amount)}</Col>
+                        </Row >
+                        <Row >
+                            <Col>Where: {expense.expenseVendor}</Col>
+                            <Col>Desc: {expense.expenseDescription}</Col>
+                        </Row>
+                    </Col>
+                    <Col>
+                        <Button
+                            onClick={() => deleteExpense(expense.id)}
+                            key={expense.id}                 
+                            >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount).slice(0,11)}</Button>
+                    </Col>
+                </Row>
+            </Container>
         )
     })
 
@@ -173,67 +165,79 @@ export default function ExpensesMainContent() {
     
     // <Card.Img src="https://picsum.photos/300/10" />
     return (
-        <main>
+        <Container >
             <Form noValidate className="expenses--input--form" onSubmit={handleSubmit}>
-                <Form.Group controlId="formDate">
-                    <Form.Label>Date you paid</Form.Label>
-                    <Form.Control
-                        type="date"
-                        placeholder="Date you Paid"
+                <Row>
+                    <Col md>
+                        <Form.Group controlId="formDate">
+                            <Form.Label>Date you paid</Form.Label>
+                            <Form.Control
+                                type="date"
+                                placeholder="Date you Paid"
+                                
+                                onChange={handleChange}
+                                value={expensesState.dateSpent} // This "value={}" is how to impliment React controlled components
+                                name="dateSpent"
+                                
+                                />
+                        </Form.Group>
+                    </Col>
+                    <Col md>
+                        <Form.Group controlId="formAmount">
+                            <Form.Label>Amount Paid</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Amount Paid"
 
-                        onChange={handleChange}
-                        value={expensesState.dateSpent} // This "value={}" is how to impliment React controlled components
-                        name="dateSpent"
-
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formAmount">
-                    <Form.Label>Amount Paid</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Amount Paid"
-
-                        onChange={handleChange}
-                        name="amount"
-                        value={expensesState.amount} // This "value={}" is how to impliment React controlled components
-                    />
-                </Form.Group>
-                <Form.Group controlId="formVendor">
-                    <Form.Label>Who did you pay?</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Type Who you paid"
-
-                        onChange={handleChange}
-                        name="expenseVendor"
-                        value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
-                    />
-                </Form.Group>
-                <Form.Group controlId="formTextArea">
-                    <Form.Label>Type a description of what you paid</Form.Label>
-                    <Form.Control 
-                        as="textarea" 
-                        rows={3} 
-                        placeholder="Type a description of what you paid"
-
-                        onChange={handleChange}
-                        name="expenseDescription"
-                        value={expensesState.expenseDescription}  // React sometimes will complain that there are un-controlled components if this isn't done.
-                    />
-                </Form.Group>
+                                onChange={handleChange}
+                                name="amount"
+                                value={expensesState.amount} // This "value={}" is how to impliment React controlled components
+                            />
+                        </Form.Group>
+                    </Col>
+                </Row>
+                <Row>
+                    <Form.Group controlId="formVendor">
+                        <Form.Label>Who did you pay?</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Type Who you paid"
+                            
+                            onChange={handleChange}
+                            name="expenseVendor"
+                            value={expensesState.expenseVendor}  // React sometimes will complain that there are un-controlled components if this isn't done.
+                        />
+                    </Form.Group>
+                </Row>
+                <Row>
+                    <Form.Group controlId="formTextArea">
+                        <Form.Label>Type a description of what you paid</Form.Label>
+                        <Form.Control 
+                            as="textarea" 
+                            rows={3} 
+                            placeholder="Type a description of what you paid"
+                            
+                            onChange={handleChange}
+                            name="expenseDescription"
+                            value={expensesState.expenseDescription}  // React sometimes will complain that there are un-controlled components if this isn't done.
+                        />
+                    </Form.Group>
+                </Row>
                 
                 <Button
                     onClick={addExpense}
+                    variant="outline-primary"
+                    className="mx-5"
+                    spacing="15"
                 >
                     Add Your Expense $ to the list ⇥
                 </Button>
 
             </Form>
-            <div className="expenses--list">
+            <Card>
                 {expensesElementsToRender}
-            </div>
+            </Card>
 
-        </main>
+        </Container>
     )
 }
