@@ -140,8 +140,8 @@ export default function ExpensesMainContent() {
                             <Col>{formatToStringMoneyAmount(expense.amount)}</Col>
                         </Row >
                         <Row >
-                            <Col>Where: {expense.expenseVendor}</Col>
-                            <Col>Desc: {expense.expenseDescription}</Col>
+                            <Col xs={6}>Where: {expense.expenseVendor}</Col>
+                            <Col xl={3} color={3434}>Desc: {expense.expenseDescription}</Col>
                         </Row>
                     </Col>
                     <Col>
