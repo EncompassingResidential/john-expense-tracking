@@ -1,8 +1,8 @@
 README.md
 ### Code Started 2/15/2022, completed 3/08/2022
-### Version 1
 
-John-Expense-Tracking
+# John Expense Tracking App
+
 SDMM 4th Project Expense Tracking 1st time using React framework created by Facebook and Bootstrap framework
 
 Example of what App should look like:
