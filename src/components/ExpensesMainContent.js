@@ -1,13 +1,8 @@
 import React from 'react';
 
-// import Button from 'react-bootstrap/Button'
-import { Button, Alert, Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { Button, Card, Col, Form, Row, Table } from 'react-bootstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-/*
-import expensesDataStorageTest from './expensesData.js'
-*/
 
 let initialExpensesState = {
     id: `${Date.now()}`,
@@ -26,13 +21,11 @@ export default function ExpensesMainContent() {
     const [allExpensesArray, setAllExpensesArray] = React.useState(JSON.parse(localStorage.getItem('expensesArrayStorage')) || [])
 
     React.useEffect(() => {
-            console.log("allExpenseArray changed");
             localStorage.setItem('expensesArrayStorage', JSON.stringify(allExpensesArray))
         }, [allExpensesArray]
     );
 
     React.useEffect(() => {
-            console.log("allExpenseArray changed");
             localStorage.setItem('expensesStateStorage', JSON.stringify(expensesState))
         }, [expensesState]
     );
@@ -44,7 +37,7 @@ export default function ExpensesMainContent() {
     function convert_to_float(b) {
         // Type conversion of string to float
         var floatValue = +(b);
-        // Return float value
+
         return floatValue;
     }
 
@@ -88,7 +81,6 @@ export default function ExpensesMainContent() {
  
     function addExpense(event) {
 
-        console.log("        --->>> addExpense Called from onclick")
         setAllExpensesArray(prevAllExpensesArray => {
             return [
             ...prevAllExpensesArray,
@@ -108,7 +100,6 @@ export default function ExpensesMainContent() {
             return {
                 ...prevExpenseState,
                 id: `${Date.now()}`,
-                // dateSpent: Date("1/1/2000"),
                 amount: 0.0,
                 expenseVendor: "",
                 expenseDescription: "",
@@ -130,43 +121,40 @@ export default function ExpensesMainContent() {
 
     const expensesElementsToRender = allExpensesArray.map((expense) => {
         return (
-            <Container fluid 
-                key={expense.id}
-            >
-                <Row>
-                    <Col>
-                        <Row >
-                            <Col>On {expense.dateSpent}</Col>
-                            <Col>{formatToStringMoneyAmount(expense.amount)}</Col>
-                        </Row >
-                        <Row >
-                            <Col xs={6}>Where: {expense.expenseVendor}</Col>
-                            <Col xl={3} color={3434}>Desc: {expense.expenseDescription}</Col>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <Button
-                            onClick={() => deleteExpense(expense.id)}
-                            key={expense.id}                 
-                            >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount).slice(0,11)}</Button>
-                    </Col>
-                </Row>
-            </Container>
+            <Row key={expense.id} className="py-1" >
+                <Col className="px-5" xs={8} >
+                <Card body className="mx-1 my-1" border="success">
+                    <Row className="text-success py-1" >
+                        <Col>On {expense.dateSpent}</Col>
+                        <Col>{formatToStringMoneyAmount(expense.amount)}</Col>
+                    </Row >
+                    <Row >
+                        <Col 
+                        className="text-success py-1">Where: {expense.expenseVendor}</Col>
+                        <Col xl={4} 
+                        className="text-primary py-1">Desc: {expense.expenseDescription}</Col>
+                    </Row>
+                    </Card>
+                </Col>
+                <Col className="pt-5" >
+                    <Button
+                        onClick={() => deleteExpense(expense.id)}
+                        key={expense.id}
+                        variant="outline-danger"
+                        className=""
+                        >Delete This Expense<br />{formatToStringMoneyAmount(expense.amount).slice(0,11)}
+                    </Button>
+                </Col>
+            </Row>
         )
     })
-
-    function handleSubmit(event) {
-
-        console.log("        --->>> handleSubmit Called from form submission");
-
-        event.preventDefault()  // if this is commented out it clears all the form data and puts the data into an HTML URL in the browser
-
-    }
     
-    // <Card.Img src="https://picsum.photos/300/10" />
     return (
-        <Container >
-            <Form noValidate className="expenses--input--form" onSubmit={handleSubmit}>
+        <Card body className="mx-1 my-1" border="success">
+            <Form 
+                noValidate 
+                className="mx-2 p-2 border"
+            >
                 <Row>
                     <Col md>
                         <Form.Group controlId="formDate">
@@ -226,18 +214,19 @@ export default function ExpensesMainContent() {
                 
                 <Button
                     onClick={addExpense}
-                    variant="outline-primary"
-                    className="mx-5"
+                    size="sm"
+                    variant="primary"
+                    className="mx-5 p-2 my-1"
                     spacing="15"
                 >
                     Add Your Expense $ to the list ⇥
                 </Button>
 
             </Form>
-            <Card>
+            <Table striped responsive="md" variant='dark' border={2} className="px-1">
                 {expensesElementsToRender}
-            </Card>
+            </Table>
 
-        </Container>
+        </Card>
     )
 }
