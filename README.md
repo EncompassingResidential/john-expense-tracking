@@ -12,7 +12,7 @@ SDMM 4th Project Expense Tracking 1st time using React framework created by Face
 Example of what App should look like:
 ![John Expense App Example of Screen](https://user-images.githubusercontent.com/94155021/157295240-c537368b-6d18-4a3e-8c2a-4617159727e3.jpg)
 
-[John's Heroku deployed Expense Tracker here](https://john-expense-tracking.herokuapp.com/)
+[John's Expense Tracker - Click HERE](https://john-expense-tracking.herokuapp.com/)  Deployed on Heroku.com
 
 [John's Github for the Expense Tracking App](https://github.com/EncompassingResidential/john-expense-tracking)
 
