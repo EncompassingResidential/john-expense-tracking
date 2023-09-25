@@ -5,7 +5,7 @@ README.md
 
 SDMM 4th Project Expense Tracking 1st time using React framework created by Facebook and Bootstrap framework
 
-[John's Expense Tracker - Click HERE](https://john-expense-tracking.herokuapp.com/)  Deployed on Heroku.com
+[John's Expense Tracker - Click HERE](https://john-expense-tracking-c8cb80ce4fab.herokuapp.com/)  Deployed on Heroku.com
 
 [John's Github for the Expense Tracking App](https://github.com/EncompassingResidential/john-expense-tracking)
 
