@@ -5,16 +5,16 @@ README.md
 
 SDMM 4th Project Expense Tracking 1st time using React framework created by Facebook and Bootstrap framework
 
+[John's Expense Tracker - Click HERE](https://john-expense-tracking.herokuapp.com/)  Deployed on Heroku.com
+
+[John's Github for the Expense Tracking App](https://github.com/EncompassingResidential/john-expense-tracking)
+
 [You can find John Ritz's CV Resume here at Linked In www](https://www.linkedin.com/in/johntritz/)
 
 [Click here for my personal Life Coach website, specialty is Addiction after 5 years of addiction counseling in Oregon from 2016 to 2021](https://www.soberjourneycopilot.com/)
 
 Example of what App should look like:
 ![John Expense App Example of Screen](https://user-images.githubusercontent.com/94155021/157295240-c537368b-6d18-4a3e-8c2a-4617159727e3.jpg)
-
-[John's Expense Tracker - Click HERE](https://john-expense-tracking.herokuapp.com/)  Deployed on Heroku.com
-
-[John's Github for the Expense Tracking App](https://github.com/EncompassingResidential/john-expense-tracking)
 
 Expense App wiki page of things learned during code development is [John Expense App Wiki page](https://github.com/EncompassingResidential/john-expense-tracking/wiki)
 
